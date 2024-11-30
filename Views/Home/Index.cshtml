@@ -1,8 +1,54 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="jumbotron jumbotron-fluid text-center">
+    <h1 class="display-4">Welcome to Dashboard</h1>
+    <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Blandit sapien turpis,
+        curabitur vehicula vitae suspendisse dis quis 
+        . Ad etiam id eros vel auctor duis primis.
+    </p>
+</div>
+<div class="row mt-2 mb-2 pb-5 ">
+
+    <div class="card bg-light col-sm-2 m-3 p-1">
+        <a class="btn stretched-link" asp-action="Books" asp-controller="Books">
+            <div class="card-body text-center">
+                <img class="card-img-top " src="@Url.Content("~/images/Logos/Luffy.jfif")" alt="Luffy">
+                <h5 class="card-title mt-4">Books</h5>
+            </div>
+        </a>
+    </div>
+    <div class="card bg-light col-sm-2 m-3 p-1">
+        <a class="btn stretched-link" asp-action="AvailableBooks" asp-controller="AvailableBooks">
+            <div class="card-body text-center">
+                <img class="card-img-top" src="@Url.Content("~/images/Logos/Luffy.jfif")" alt="Luffy">
+                <h5 class="card-title mt-1">Available Books</h5>
+            </div>
+        </a>
+    </div>
+    <div class="card bg-light col-sm-2 m-3 p-1">
+        <a class="btn stretched-link" asp-action="BookTransactions" asp-controller="BookTransactions">
+            <div class="card-body text-center">
+                <img class="card-img-top" src="@Url.Content("~/images/Logos/Luffy.jfif")" alt="Luffy">
+                <h5 class="card-title mt-1">Book Transactions</h5>
+            </div>
+        </a>
+    </div>
+    <div class="card bg-light col-sm-2 m-3 p-1">
+        <a class="btn stretched-link" asp-action="Index" asp-controller="ManageBooks">
+            <div class="card-body text-center">
+                <img class="card-img-top" src="@Url.Content("~/images/Logos/Luffy.jfif")" alt="Luffy">
+                <h5 class="card-title mt-1">Manage Books</h5>
+            </div>
+        </a>
+    </div>
+    <div class="card bg-light col-sm-2 m-3 p-1">
+        <a class="btn stretched-link" asp-action="Users" asp-controller="Users">
+            <div class="card-body text-center">
+                <img class="card-img-top" src="@Url.Content("~/images/Logos/Luffy.jfif")" alt="Luffy">
+                <h5 class="card-title mt-4">Users</h5>
+            </div>
+        </a>
+    </div>
 </div>

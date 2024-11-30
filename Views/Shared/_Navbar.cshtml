@@ -7,20 +7,34 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <ul class="navbar-nav flex-grow-1">
-        <li class="nav-item active">
-            <a class="nav-link "><strong>Characters</strong></a>
-        </li>
-        <li class="nav-item active">
-            <a class="nav-link "><strong>Videos</strong></a>
-        </li>
-        @if (User.IsInRole("Admin"))
+        
+            <li class="nav-item active">
+                <a class="nav-link " asp-action="Index" asp-controller="Home">Dashboard</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link " asp-action="Books" asp-controller="Books">Books</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link " asp-action="AvailableBooks" asp-controller="AvailableBooks" >Available Books</a>
+            </li>
+        @if (User.IsInRole("Member"))
         {
             <li class="nav-item active">
-                <a class="nav-link "><strong>Admin button1</strong></a>
+                <a class="nav-link " asp-action="BorrowedBooks" asp-controller="BorrowedBooks">Current Burrowings</a>
+            </li>
+        }else if(User.IsInRole("Admin"))
+        {
+            <li class="nav-item active">
+                <a class="nav-link " asp-action="BookTransactions" asp-controller="BookTransactions" >Book Transactions</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link "><strong>Admin button2</strong></a>
+                <a class="nav-link " asp-action="Index" asp-controller="ManageBooks">Manage Books</a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link " asp-action="Users" asp-controller="Users" >Users</a>
+            </li>
+            
         }
+        
     </ul>
 }

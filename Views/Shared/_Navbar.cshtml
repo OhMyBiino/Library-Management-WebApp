@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using LibraryManagement.Areas.Identity.Data
+
+@inject SignInManager<LibraryManagementUser> SignInManager
+@inject UserManager<LibraryManagementUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <ul class="navbar-nav flex-grow-1">
+        <li class="nav-item active">
+            <a class="nav-link "><strong>Characters</strong></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link "><strong>Videos</strong></a>
+        </li>
+        @if (User.IsInRole("Admin"))
+        {
+            <li class="nav-item active">
+                <a class="nav-link "><strong>Admin button1</strong></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link "><strong>Admin button2</strong></a>
+            </li>
+        }
+    </ul>
+}

@@ -12,26 +12,26 @@
                 <a class="nav-link " asp-action="Index" asp-controller="Home">Dashboard</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link " asp-action="Books" asp-controller="Books">Books</a>
+                <a class="nav-link " asp-action="ListOfBooksPage" asp-controller="Books">Books</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link " asp-action="AvailableBooks" asp-controller="AvailableBooks" >Available Books</a>
+                <a class="nav-link " asp-action="ListOfAvailableBooksPage" asp-controller="AvailableBooks" >Available Books</a>
             </li>
         @if (User.IsInRole("Admin"))
         {
             <li class="nav-item active">
-                <a class="nav-link " asp-action="BookTransactions" asp-controller="BookTransactions">Book Transactions</a>
+                <a class="nav-link " asp-action="BookTransactionsPage" asp-controller="BookTransactions">Book Transactions</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link " asp-action="Index" asp-controller="ManageBooks">Manage Books</a>
+                <a class="nav-link " asp-action="ManageBooksPage" asp-controller="ManageBooks">Manage Books</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link " asp-action="Users" asp-controller="Users">Users</a>
+                <a class="nav-link " asp-action="ListOfUserspage" asp-controller="Users">Users</a>
             </li>
         }else
         {
             <li class="nav-item active">
-                <a class="nav-link " asp-action="MyCurrentBorrowedBooks" asp-controller="CurrentBorrows">Current Burrowings</a>
+                <a class="nav-link " asp-action="ListOfBorrowedBooksPage" asp-controller="CurrentBorrows">Current Burrowings</a>
             </li>
         }
         

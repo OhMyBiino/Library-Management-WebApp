@@ -4,7 +4,7 @@ namespace LibraryManagement.Controllers
 {
     public class AvailableBooksController : Controller
     {
-        public IActionResult AvailableBooks()
+        public IActionResult ListOfAvailableBooksPage()
         {
             return View();
         }

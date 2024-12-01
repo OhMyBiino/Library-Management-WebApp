@@ -4,7 +4,7 @@ namespace LibraryManagement.Controllers
 {
     public class UsersController : Controller
     {
-        public IActionResult Users()
+        public IActionResult ListOfUsersPage()
         {
             return View();
         }

@@ -4,7 +4,7 @@ namespace LibraryManagement.Controllers
 {
     public class CurrentBorrowsController : Controller
     {
-        public IActionResult MyCurrentBorrowedBooks()
+        public IActionResult ListOfBorrowedBooksPage()
         {
             return View();
         }

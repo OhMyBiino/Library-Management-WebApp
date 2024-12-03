@@ -9,19 +9,19 @@ namespace LibraryManagement.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public ManageBooksController(ApplicationDbContext context) 
+        public ManageBooksController(ApplicationDbContext context)
         {
             _context = context;
         }
-        public async Task <IActionResult> ManageBooksPage()
+        public async Task<IActionResult> ManageBooksPage()
         {
             var bookList = await _context.Books.ToListAsync();
 
             return View(bookList);
         }
 
-        //CREATE
-        public IActionResult CreateBook() 
+        //CREATE : Get
+        public IActionResult CreateBook()
         {
 
             return View();
@@ -36,6 +36,75 @@ namespace LibraryManagement.Controllers
             {
                 _context.Add(book);
                 await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(ManageBooksPage));
+            }
+            return View(book);
+        }
+
+        //DETAILS : Get
+        [HttpGet]
+        public async Task<IActionResult> BookDetails(string id) 
+        {
+            if (id == null) 
+            {
+                return NotFound();
+            }
+
+            var book = await _context.Books.FindAsync(id);
+
+            if (book == null) 
+            {
+                return NotFound();
+            }
+
+            return View(book);
+        }
+
+        //EDIT : Get
+        [HttpGet]
+        public async Task<IActionResult> EditBook(string? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var book = await _context.Books.FindAsync(id);
+
+            if (book == null)
+            {
+                return NotFound();
+            }
+            return View(book);
+        }
+
+        //EDIT : POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditBook(string id, [Bind("Title,Description,Author,Genre,ISBN,isBorrowed")] BookModel book)
+        {
+            if (id != book.ISBN)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(book);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!BookExists(book.ISBN))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
                 return RedirectToAction(nameof(ManageBooksPage));
             }
             return View(book);
@@ -76,7 +145,7 @@ namespace LibraryManagement.Controllers
             return RedirectToAction(nameof(ManageBooksPage));
         }
 
-        private bool MovieExists(string id) 
+        private bool BookExists(string id) 
         {
             return _context.Books.Any(b => b.ISBN == id);
         }

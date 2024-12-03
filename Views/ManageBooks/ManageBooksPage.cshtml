@@ -1,18 +1,18 @@
 ﻿@model IEnumerable<BookModel>
 
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-12 bg-light">
         <nav>
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item active"><strong>Manage Books</strong></li>
+            <ul class="breadcrumb pt-2">
+                <li class="breadcrumb-item"><strong>Manage Books</strong></li>
             </ul>
         </nav>
     </div>
 </div>
-<div class="container">
+<div class="container mt-2">
     <a class="btn btn-primary" asp-action="CreateBook">Add Book</a>
     <table class="table table-striped">
-        <thead class="thead-dark">
+        <thead>
             <tr>
                 <th>@Html.DisplayNameFor(model => model.Title)</th>
                 <th>@Html.DisplayNameFor(model => model.Genre)</th>
@@ -29,8 +29,8 @@
                     <td>@Html.DisplayFor(item => book.Author)</td>
                     <td>@Html.DisplayFor(item => book.ISBN)</td>
                     <td colspan="2">
-                        <a class="btn btn-secondary btn-sm">Edit</a>
-                        <a class="btn btn-secondary btn-sm">Details</a>
+                        <a asp-action="EditBook" asp-route-id="@book.ISBN"class="btn btn-secondary btn-sm">Edit</a>
+                        <a asp-action="BookDetails" asp-route-id="@book.ISBN"class="btn btn-secondary btn-sm">Details</a>
                         <a asp-action="DeleteBook" asp-route-id="@book.ISBN" class="btn btn-danger btn-sm">Delete</a>
                     </td>
                 </tr>

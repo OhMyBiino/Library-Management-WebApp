@@ -1,6 +1,7 @@
 ﻿using LibraryManagement.Database;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagement.Controllers
 {
@@ -13,9 +14,11 @@ namespace LibraryManagement.Controllers
             _context = context;
         }
 
-        public IActionResult BookTransactionsPage()
+        public async Task<IActionResult> BookTransactionsPage() 
         {
-            return View();
+            var transactions = await _context.Transactions.ToListAsync();
+
+            return View(transactions);
         }
     }
 }

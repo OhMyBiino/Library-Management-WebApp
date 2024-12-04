@@ -1,9 +1,38 @@
-﻿<div class="row">
-    <div class="col-sm-12">
+﻿@model IEnumerable<LibraryManagement.Models.TransactionModel>
+<div class="row">
+    <div class="col-sm-12 bg-light">
         <nav>
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item active"><strong>Book Transactions</strong></li>
+            <ul class="breadcrumb pt-2">
+                <li class="breadcrumb-item"><strong>Book Transactions</strong></li>
             </ul>
         </nav>
     </div>
+</div>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.TransactionID)</th>
+                <th>@Html.DisplayNameFor(model => model.UserID)</th>
+                <th>@Html.DisplayNameFor(model => model.BorrowerName)</th>
+                <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
+                <th>@Html.DisplayNameFor(model => model.BorrowDate)</th>
+                <th>@Html.DisplayNameFor(model => model.DueDate)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var transaction in Model)
+            {
+                <tr>
+                    <td>@transaction.TransactionID</td>
+                    <td>@transaction.UserID</td>
+                    <td>@transaction.BorrowerName</td>
+                    <td>@transaction.TransactionType</td>
+                    <td >@transaction.BorrowDate</td>
+                    <td>@transaction.DueDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

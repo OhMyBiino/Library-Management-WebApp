@@ -14,7 +14,7 @@
 </div>
 <div class="row mt-2">
     <div class="col-sm-4">
-        <form asp-action="EditBook">
+        <form method="post" asp-action="EditBook">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ISBN" />
             <div class="form-group">
@@ -39,12 +39,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="ISBN" class="control-label"></label>
-                <input asp-for="ISBN" class="form-control ">
+                <input asp-for="ISBN" class="form-control" disabled>
                 <span asp-validation-for="ISBN" class="text-danger"></span>
             </div>
             <div class="form-group mt-1">
                 <input type="submit" value="Save" class="btn btn-primary btn-sm">
-                <a asp-action="ManageBooksPage" class="btn btn-secondary btn-sm"> Back</a>
+                <a asp-action="ManageBooksPage" class="btn btn-secondary btn-sm">Back</a>
             </div>
         </form>
     </div>

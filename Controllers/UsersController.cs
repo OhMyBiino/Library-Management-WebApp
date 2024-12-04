@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagement.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class UsersController : Controller
     {
         public IActionResult ListOfUsersPage()

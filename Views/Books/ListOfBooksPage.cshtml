@@ -1,33 +1,40 @@
-﻿
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<LibraryManagement.Models.BookModel>
+
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-12 bg-light">
         <nav>
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item active"><strong>Books</strong></li>
+            <ul class="breadcrumb pt-2">
+                <li class="breadcrumb-item"><strong>Books</strong></li>
             </ul>
         </nav>
     </div>
 </div>
-<div class="row mb-3 p-3">
-    @for (int i = 0; i < 12; i++)
+<div class="row mb-3 p-3 mt-2">
+    @foreach (var book in Model)
     {
         <div class="card bg-light col-sm-3 mb-1">
             <div class="card-body">
-                <h3 class="card-title">Item @i</h3>
+                <h3 class="card-title">@book.Title</h3>
                 <p class="card-text">
-                    Lorem ipsum odor amet, consectetuer adipiscing elit.
-                    Blandit sapien turpis, curabitur vehicula vitae suspendisse dis quis
-                    Ad etiam id eros vel auctor duis primis.
+                   @book.Description
                 </p>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Info #1</li>
-                <li class="list-group-item">Info #2</li>
-                <li class="list-group-item">Info #3</li>
-                <ul />
+                <li class="list-group-item">@book.Genre</li>
+                <li class="list-group-item">@book.Author</li>
+                <li class="list-group-item">@book.ISBN</li>
+             </ul>
                 <div class="card-body">
-                    <a href="" class="card-link">Card Link</a>
-                    <a class="card-link">Another Link</a>
+                    <div class="form-group d-flex justify-content-center">
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="BookDetails" asp-controller="ManageBooks" asp-route-id="@book.ISBN" class="card-link btn btn-secondary btn-sm">Details</a>
+                        }else
+                        {
+                            <a class="card-link btn btn-primary btn-sm">Borrow</a>
+                        }
+                    </div>
                 </div>
         </div>
 

@@ -1,10 +1,12 @@
 ﻿using LibraryManagement.Database;
 using LibraryManagement.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagement.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ManageBooksController : Controller
     {
         private readonly ApplicationDbContext _context;

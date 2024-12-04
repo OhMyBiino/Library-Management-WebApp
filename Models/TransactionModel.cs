@@ -12,8 +12,8 @@ namespace LibraryManagement.Models
         [Required]
         public string UserID { get; set; }
 
-        [Required]
-        public LibraryManagementUser User{ get; set; }
+        //[Required]
+        //public LibraryManagementUser User{ get; set; }
 
         [MaxLength(100)]
         public string BorrowerName{ get; set; }

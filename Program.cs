@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 //var connectionString = builder.Configuration.GetConnectionString("LibraryManagementContextConnection") ?? throw new InvalidOperationException("Connection string 'LibraryManagementContextConnection' not found.");
 
+
 builder.Services.AddDbContext<LibraryManagementContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("AuthenticationDatabase"), new MySqlServerVersion(new Version(8, 0, 34))));
 

@@ -21,10 +21,10 @@ namespace LibraryManagement.Database
                 .Property(t => t.TransactionType)
                 .HasConversion<string>();
 
-            modelBuilder.Entity<TransactionModel>()
-                .HasOne(th => th.User)
-                .WithMany()
-                .HasForeignKey(th => th.UserID);
+            //modelBuilder.Entity<TransactionModel>()
+            //    .HasOne(th => th.User)
+            //    .WithMany()
+            //    .HasForeignKey(th => th.UserID);
 
         }
     }

@@ -65,9 +65,12 @@ namespace LibraryManagement.Controllers
                     UserID = currentUser.Id,
                     BorrowerName = $"{currentUser.FirstName} {currentUser.LastName}",
                     TransactionType = "Borrow",
+                    BookISBN = bookToBorrow.ISBN,
+                    Status = "Borrowed"
                 };
 
                 _context.Transactions.Add(Transaction);
+
 
 
                 await _context.SaveChangesAsync();

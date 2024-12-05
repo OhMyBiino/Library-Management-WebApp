@@ -1,5 +1,8 @@
 ﻿@model LibraryManagement.Models.BookModel
 
+@{
+    ViewData["Title"] = "Borrow";
+}
 <div class="row">
     <div class="col-sm-12 bg-light">
         <nav>
@@ -50,4 +53,5 @@
     <form asp-action="Borrow" asp-route-id="@Model.ISBN" method="post">
          <button type="submit" class="btn btn-success btn-sm">Borrow Book</button>
     </form>
+    <a asp-action="ListOfAvailableBooksPage" class="btn btn-primary btn-sm">Back</a>
 </div>

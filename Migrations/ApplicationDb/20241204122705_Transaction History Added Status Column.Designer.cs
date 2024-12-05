@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryManagement.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241204053904_Transaction History")]
-    partial class TransactionHistory
+    [Migration("20241204122705_Transaction History Added Status Column")]
+    partial class TransactionHistoryAddedStatusColumn
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,6 +65,10 @@ namespace LibraryManagement.Migrations.ApplicationDb
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
+                    b.Property<string>("BookISBN")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<DateTime>("BorrowDate")
                         .HasColumnType("datetime(6)");
 
@@ -75,6 +79,10 @@ namespace LibraryManagement.Migrations.ApplicationDb
 
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("TransactionType")
                         .IsRequired()

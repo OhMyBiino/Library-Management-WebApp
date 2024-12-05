@@ -23,6 +23,10 @@ namespace LibraryManagement.Models
         public string BorrowerName{ get; set; }
 
         [Required]
+        [DisplayName("Book ISBN")]
+        public string BookISBN { get; set; }
+
+        [Required]
         [DisplayName("Transaction Type")]
         public string TransactionType { get; set; }
 
@@ -36,6 +40,10 @@ namespace LibraryManagement.Models
             get => BorrowDate.AddDays(3);
             private set { }
         }
+
+        [Required]
+        [DisplayName("Status")]
+        public string Status { get; set; } = "Borrowed";
 
     }
 }

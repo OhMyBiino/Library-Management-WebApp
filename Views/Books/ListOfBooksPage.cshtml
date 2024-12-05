@@ -1,6 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @model IEnumerable<LibraryManagement.Models.BookModel>
 
+@{
+    ViewData["Title"] = "Books";
+}
 <div class="row">
     <div class="col-sm-12 bg-light">
         <nav>
@@ -32,7 +35,8 @@
                             <a asp-action="BookDetails" asp-controller="ManageBooks" asp-route-id="@book.ISBN" class="card-link btn btn-secondary btn-sm">Details</a>
                         }else
                         {
-                            <a class="card-link btn btn-primary btn-sm">Borrow</a>
+                            <a asp-action="BookDetails" asp-controller="Books" asp-route-id="@book.ISBN"
+                                class="card-link btn btn-primary btn-sm">Details</a>
                         }
                     </div>
                 </div>

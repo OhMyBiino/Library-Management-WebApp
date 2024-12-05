@@ -13,11 +13,20 @@ namespace LibraryManagement.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public async Task <IActionResult> ListOfBooksPage()
         {
             var bookCollection = await _context.Books.ToListAsync();
 
             return View(bookCollection);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> BookDetails(string? id) 
+        {
+            var book = await _context.Books.FindAsync(id);
+
+            return View(book);
         }
     }
 }

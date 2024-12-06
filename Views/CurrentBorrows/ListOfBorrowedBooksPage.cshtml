@@ -13,7 +13,17 @@
         </nav>
     </div>
 </div>
-
+@* <div class="d-flex justify-content-end mt-2">
+    <div class="col-sm-6">
+        <form asp-action="SearchBooks" method="get" class="form-inline">
+            <div class="form-group d-flex mx-sm-3 mb-2">
+                <label for="searchQuery" class="sr-only"></label>
+                <input type="text" class="form-control" id="searchQuery" name="query" placeholder="Search by title, author, isbn, or genre" />
+                <button type="submit" class="btn btn-primary btn-md">Search</button>
+            </div>
+        </form>
+    </div>
+</div> *@
 <div class="row mt-2">
     @foreach (var borrowedBook in Model)
     {

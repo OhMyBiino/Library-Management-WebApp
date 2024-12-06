@@ -15,6 +15,7 @@ namespace LibraryManagement.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public async Task<IActionResult> ListOfUsersPage()
         {
             // Retrieve the "Member" role ID
@@ -34,6 +35,16 @@ namespace LibraryManagement.Controllers
                 .ToListAsync();
 
             return View(usersInMemberRole);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SearchBooks(string? query)
+        {
+            var bookSearchedCollection = await _context.Users
+                .Where(user => user.FirstName == query || user.LastName == query || user.PhoneNumber == query || user.Email == query)
+                .ToListAsync();
+
+            return View("ListOfUsersPage", bookSearchedCollection);
         }
     }
 }

@@ -26,6 +26,16 @@ namespace LibraryManagement.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> SearchBooks(string? query)
+        {
+            var bookSearchedCollection = await _context.Books
+                .Where(b => (b.Title == query || b.Genre == query || b.ISBN == query || b.Author == query) && !b.isBorrowed )
+                .ToListAsync();
+
+            return View("ListOfAvailableBooksPage", bookSearchedCollection);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Borrow(string? id) 
         {
             if (id == null) 

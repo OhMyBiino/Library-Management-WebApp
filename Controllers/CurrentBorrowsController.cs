@@ -40,8 +40,9 @@ namespace LibraryManagement.Controllers
             return View(myBorrowedBooks);
         }
 
+        //NOT IMPLEMENTED SINCE KELANGAN NG TRANSACTION DUEDATE, which means new adjustment sa Model
         //public async Task<IActionResult> BookDetails(string? id) 
-        //{
+        //{  
         //    var book = await _context.Books.FindAsync(id);
 
         //    if (book == null)
@@ -49,6 +50,29 @@ namespace LibraryManagement.Controllers
 
 
         //    return View(book);
+        //}
+
+        //SEARCHING ALGORITHM ISSUES
+        //[HttpGet]
+        //public async Task<IActionResult> SearchBooks(string? query)
+        //{
+        //    var currentUser = await _userManager.GetUserAsync(User);
+        //    var currentUserID = currentUser.Id;
+
+        //    var BorrowedBooksStringISBN = await _context.Transactions
+        //        .Where(transaction => transaction.UserID == currentUserID && transaction.Status == "Borrowed")
+        //        .Select(transactionISBN => transactionISBN.BookISBN)
+        //        .ToListAsync();
+
+        //    var myBorrowedBooks = await _context.Books
+        //        .Where(book => BorrowedBooksStringISBN.Contains(book.ISBN))
+        //        .ToListAsync();
+
+        //    var bookSearchedCollection = myBorrowedBooks.Where(b => b.Title.Contains(query) ||
+        //            b.Author.Contains(query) || b.Genre.Contains(query) || b.ISBN.Contains(query))
+        //        .ToList() ;
+
+        //    return View("ListOfBorrowedBooksPage", bookSearchedCollection);
         //}
 
         [HttpGet]

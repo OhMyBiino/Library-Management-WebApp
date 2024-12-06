@@ -28,5 +28,15 @@ namespace LibraryManagement.Controllers
 
             return View(book);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> SearchBooks(string? query)
+        {
+            var bookSearchedCollection = await _context.Books
+                .Where(b => b.Title == query || b.Genre == query || b.ISBN == query || b.Author == query)
+                .ToListAsync();
+
+            return View("ListOfBooksPage", bookSearchedCollection);
+        }
     }
 }

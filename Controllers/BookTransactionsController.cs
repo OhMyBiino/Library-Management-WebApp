@@ -14,11 +14,22 @@ namespace LibraryManagement.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public async Task<IActionResult> BookTransactionsPage() 
         {
             var transactions = await _context.Transactions.ToListAsync();
 
             return View(transactions);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SearchBooks(string? query)
+        {
+            var bookSearchedCollection = await _context.Transactions
+                .Where(transaction => transaction.TransactionID.ToString() == query || transaction.UserID == query || transaction.BookISBN == query || transaction.BorrowerName == query)
+                .ToListAsync();
+
+            return View("BookTransactionsPage", bookSearchedCollection);
         }
     }
 }

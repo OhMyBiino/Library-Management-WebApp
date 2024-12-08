@@ -132,6 +132,7 @@ namespace LibraryManagement.Controllers
                     UserID = currentUser.Id,
                     BorrowerName = $"{currentUser.FirstName} {currentUser.LastName}",
                     TransactionType = "Return",
+                    BorrowDate = prevTransaction.BorrowDate,
                     BookISBN = bookToReturn.ISBN,
                     Status = "Returned"
                 };

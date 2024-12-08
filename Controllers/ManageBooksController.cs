@@ -142,10 +142,14 @@ namespace LibraryManagement.Controllers
         }
 
         //POST: DELETE
-        [HttpDelete, ActionName("DeleteBook")]
+        [HttpPost, ActionName("DeleteBook")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteBookConfirmed(string id) 
+        public async Task<IActionResult> DeleteBookConfirmed(string? id) 
         {
+            if (id == null) 
+            {
+                return NotFound("ID is null");
+            }
             var book = await _context.Books.FindAsync(id);
 
             if (book != null) 

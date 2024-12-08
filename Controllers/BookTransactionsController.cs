@@ -17,7 +17,9 @@ namespace LibraryManagement.Controllers
         [HttpGet]
         public async Task<IActionResult> BookTransactionsPage() 
         {
-            var transactions = await _context.Transactions.ToListAsync();
+            var transactions = await _context.Transactions
+                .OrderByDescending(transactions => transactions.BorrowDate)
+                .ToListAsync();
 
             return View(transactions);
         }

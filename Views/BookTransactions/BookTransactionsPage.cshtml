@@ -31,9 +31,11 @@
                 <th>@Html.DisplayNameFor(model => model.TransactionID)</th>
                 <th>@Html.DisplayNameFor(model => model.UserID)</th>
                 <th>@Html.DisplayNameFor(model => model.BorrowerName)</th>
+                <th>@Html.DisplayNameFor(model => model.BookISBN)</th>
                 <th>@Html.DisplayNameFor(model => model.TransactionType)</th>
                 <th>@Html.DisplayNameFor(model => model.BorrowDate)</th>
                 <th>@Html.DisplayNameFor(model => model.DueDate)</th>
+                <th>@Html.DisplayNameFor(model => model.Status)</th>
             </tr>
         </thead>
         <tbody>
@@ -43,9 +45,11 @@
                     <td>@transaction.TransactionID</td>
                     <td>@transaction.UserID</td>
                     <td>@transaction.BorrowerName</td>
+                    <td>@transaction.BookISBN</td>
                     <td>@transaction.TransactionType</td>
                     <td >@transaction.BorrowDate</td>
                     <td>@transaction.DueDate</td>
+                    <td>@transaction.Status</td>
                 </tr>
             }
         </tbody>

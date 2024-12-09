@@ -17,6 +17,9 @@
             <li class="nav-item active">
                 <a class="nav-link " asp-action="ListOfAvailableBooksPage" asp-controller="AvailableBooks" >Available Books</a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link " asp-action="BorrowedBooksPage" asp-controller="BorrowedBooks">Borrowed Books</a>
+            </li>
         @if (User.IsInRole("Admin"))
         {
             <li class="nav-item active">
@@ -31,7 +34,7 @@
         }else
         {
             <li class="nav-item active">
-                <a class="nav-link " asp-action="ListOfBorrowedBooksPage" asp-controller="CurrentBorrows">Current Burrowings</a>
+                <a class="nav-link " asp-action="ListOfBorrowedBooksPage" asp-controller="CurrentBorrows">Current Borrows</a>
             </li>
         }
         

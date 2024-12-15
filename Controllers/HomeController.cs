@@ -17,6 +17,7 @@ namespace LibraryManagement.Controllers
 
         public IActionResult Index()
         {
+            //Loads DASHBOARD
             return View();
         }
         

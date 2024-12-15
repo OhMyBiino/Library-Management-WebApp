@@ -2,13 +2,16 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using LibraryManagement.Data;
 using LibraryManagement.Areas.Identity.Data;
+using LibraryManagement.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//var connectionString = builder.Configuration.GetConnectionString("LibraryManagementContextConnection") ?? throw new InvalidOperationException("Connection string 'LibraryManagementContextConnection' not found.");
 
 builder.Services.AddDbContext<LibraryManagementContext>(options =>
-    options.UseMySql(builder.Configuration.GetConnectionString("LibraryManagementContextConnection"), new MySqlServerVersion(new Version(8, 0, 34))));
+    options.UseMySql(builder.Configuration.GetConnectionString("AuthenticationDatabase"), new MySqlServerVersion(new Version(8, 0, 34))));
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("ApplicationDatabase"), new MySqlServerVersion(new Version(8, 0, 34))));
 
 builder.Services.AddDefaultIdentity<LibraryManagementUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>()
